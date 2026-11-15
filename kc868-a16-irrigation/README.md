@@ -1,6 +1,15 @@
-# KC868-A16 irrigation + buffer tank controller
+# KC868-A16 irrigation and buffer-tank controller
 
-PlatformIO/Arduino firmware for the **original ESP32 KC868-A16**. It controls four 24-VAC irrigation zones through external dry-contact relays/AC interfaces, a master valve, a tank outlet pump, and a well-pump contactor. It reads two Modbus soil probes, two pulse flow meters, rain, tank low/high floats, well overload and dry-well contacts, and publishes MQTT/Home Assistant discovery.
+PlatformIO/Arduino firmware for the **original ESP32 KC868-A16**. It controls four irrigation zones, a master valve, tank outlet pump, well-pump contactor, and alarm through suitable external interfaces. It reads two Modbus soil probes, two pulse flow meters, rain, tank floats, and well protection contacts. Status and commands are available through MQTT, automatic Home Assistant discovery, the companion Android app, and password-protected Wi-Fi firmware updates.
+
+## Documentation
+
+- [Implementation and data flow](docs/IMPLEMENTATION.md)
+- [Hardware, wiring, and electrical safety](docs/HARDWARE.md)
+- [Home Assistant configuration and examples](docs/HOME_ASSISTANT.md)
+- [Wi-Fi OTA updates](docs/OTA.md)
+- [Commissioning checklist](docs/COMMISSIONING.md)
+- [Troubleshooting and fault help](docs/TROUBLESHOOTING.md)
 
 ## Safety
 
@@ -30,11 +39,21 @@ Inputs are assumed active when closed to the A16 input common. Outputs are confi
 
 ## Build
 
-1. Copy `include/secrets.example.h` to `include/secrets.h` and edit Wi-Fi/MQTT credentials.
-2. Install PlatformIO.
-3. Run `pio run`, then `pio run -t upload`.
-4. Set soil probes to Modbus IDs 1 and 2, 9600 8N1.
-5. Verify the probe registers in `include/config.h`; generic probes differ.
+1. Install [PlatformIO](https://platformio.org/) in VS Code or its CLI.
+2. Copy `include/secrets.example.h` to `include/secrets.h` and set Wi-Fi, MQTT, and a separate OTA password (minimum eight characters). Never commit this file.
+3. Connect the board over USB and run:
+
+   ```sh
+   cd kc868-a16-irrigation
+   pio run
+   pio run --target upload
+   pio device monitor
+   ```
+
+4. Set the two soil probes to Modbus IDs 1 and 2 at 9600 8N1.
+5. Verify the board revision, I/O polarity, and probe register map in `include/config.h` before connecting field loads.
+
+The first upload must use USB. After the board joins Wi-Fi, use `pio run -e kc868-a16-ota -t upload`; see [OTA.md](docs/OTA.md).
 
 ## USB-RS485 soil probe utility
 
@@ -54,4 +73,11 @@ EMPTY stops irrigation, waits `refillDelaySec`, observes `minPumpOffSec`, starts
 ## Known commissioning items
 
 The defaults are conservative examples, not final site settings. Calibrate both pulse-per-liter values, invert any float/input whose contact convention differs, confirm soil Modbus scaling, and measure normal zone/well flows before enabling no-flow and leak thresholds.
+
+## Configuration boundaries
+
+- Compile-time board pins, addresses, timing constants, device identity, and MQTT prefix are in `include/config.h`.
+- Network and broker secrets are in ignored `include/secrets.h`.
+- Runtime zone plans and system settings are stored in ESP32 NVS and can be changed over MQTT by the Android client.
+- The controller remains responsible for interlocks even if Wi-Fi, MQTT, Home Assistant, or the phone is unavailable.
 

@@ -40,7 +40,8 @@ void MqttService::publishDiscovery()
     JsonDocument d;
     d["name"] = name;
     d["unique_id"] = String(Config::DEVICE_ID) + "_" + id;
-    d["state_topic"] = stateTopic;
+    if (stateTopic.length())
+      d["state_topic"] = stateTopic;
     d["availability_topic"] = String(Config::MQTT_PREFIX) + "/availability";
     if (valueTemplate && *valueTemplate)
       d["value_template"] = valueTemplate;
@@ -66,12 +67,15 @@ void MqttService::publishDiscovery()
   for (int i = 0; i < 4; i++)
     entity("switch", "zone" + String(i + 1), "Zone " + String(i + 1), st, ("{{ value_json.zone" + String(i + 1) + " }}").c_str(), String(Config::MQTT_PREFIX) + "/cmd/zone" + String(i + 1));
   entity("switch", "weather_block", "Weather block", st, "{{ value_json.weather_block }}", String(Config::MQTT_PREFIX) + "/cmd/weather_block");
-  entity("button", "clear_faults", "Clear faults", st, "", String(Config::MQTT_PREFIX) + "/cmd/clear_faults");
+  entity("button", "clear_faults", "Clear faults", "", "", String(Config::MQTT_PREFIX) + "/cmd/clear_faults");
   entity("sensor", "tank_state", "Tank state", st, "{{ value_json.tank_state }}");
   entity("binary_sensor", "well_pump", "Well pump", st, "{{ value_json.well_pump }}");
+  entity("binary_sensor", "maintenance_mode", "Maintenance mode", st, "{{ 'ON' if value_json.maintenance_mode else 'OFF' }}");
   entity("sensor", "faults", "Fault mask", st, "{{ value_json.faults }}");
-  entity("sensor", "irrigation_flow", "Irrigation flow", st, "{{ value_json.irrigation_lpm }}");
-  entity("sensor", "well_flow", "Well flow", st, "{{ value_json.well_lpm }}");
+  entity("sensor", "irrigation_flow", "Irrigation flow", st, "{{ value_json.irrigation_lpm }}", "", "L/min", "measurement", "volume_flow_rate");
+  entity("sensor", "well_flow", "Well flow", st, "{{ value_json.well_lpm }}", "", "L/min", "measurement", "volume_flow_rate");
+  entity("sensor", "irrigation_water", "Irrigation water", st, "{{ value_json.irrigation_liters }}", "", "L", "total_increasing", "volume");
+  entity("sensor", "well_water", "Well water", st, "{{ value_json.well_liters }}", "", "L", "total_increasing", "volume");
   for (int i = 0; i < 2; i++)
   {
     entity("sensor", "soil" + String(i + 1) + "_moisture", "Soil " + String(i + 1) + " moisture", st, ("{{ value_json.soil" + String(i + 1) + "_moisture }}").c_str(), "", "%", "measurement");
@@ -154,6 +158,7 @@ void MqttService::publishState(const SensorReading s[2])
   d["irrigation_liters"] = controller_.irrigationLiters();
   d["well_liters"] = controller_.wellLiters();
   d["weather_block"] = controller_.weatherBlocked() ? "ON" : "OFF";
+  d["maintenance_mode"] = controller_.maintenanceMode();
   for (int i = 0; i < 2; i++)
   {
     if (s[i].valid)

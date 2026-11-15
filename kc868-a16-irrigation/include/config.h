@@ -5,6 +5,7 @@ namespace Config
 {
     constexpr char DEVICE_ID[] = "kc868_a16_irrigation";
     constexpr char DEVICE_NAME[] = "Garden Irrigation Controller";
+    constexpr char OTA_HOSTNAME[] = "kc868-a16-irrigation";
     constexpr char MQTT_PREFIX[] = "garden/irrigation";
 
     // Original ESP32 KC868-A16. Confirm the board revision before energizing outputs.
@@ -35,7 +36,8 @@ namespace Config
     constexpr uint8_t TANK_OUTLET_PUMP_OUT = 6;
     constexpr uint8_t ALARM_OUT = 7;
 
-    constexpr uint8_t SENSOR_IDS[1] = {2};
+    constexpr uint8_t SENSOR_IDS[2] = {1, 2};
+    constexpr size_t SENSOR_COUNT = sizeof(SENSOR_IDS) / sizeof(SENSOR_IDS[0]);
     constexpr uint16_t REG_SOIL_START = 0x0000;
     constexpr uint8_t SENSOR_REG_COUNT = 7; // temperature, moisture, EC, pH, N, P, K
 

@@ -38,5 +38,5 @@ void SoilSensors::update()
   }
   else if (now - r.lastOkMs > 60000)
     r.valid = false;
-  next_ ^= 1;
+  next_ = (next_ + 1) % Config::SENSOR_COUNT;
 }

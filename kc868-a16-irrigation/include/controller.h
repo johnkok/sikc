@@ -16,6 +16,7 @@ public:
       stopIrrigation();
   }
   void clearFaults();
+  void prepareForFirmwareUpdate();
   void onFlowPulse(bool well);
   void setSensors(const SensorReading r[2]);
   uint16_t faultMask() const { return faults_; }
@@ -25,6 +26,7 @@ public:
   bool filling() const { return refillState_ != 0; }
   float irrigationLpm() const { return irrigationLpm_; }
   bool weatherBlocked() const { return weatherBlock_; }
+  bool maintenanceMode() const { return maintenanceMode_; }
   float wellLpm() const { return wellLpm_; }
   double irrigationLiters() const { return irrigationLiters_; }
   double wellLiters() const { return wellLiters_; }
@@ -44,6 +46,7 @@ private:
   bool zoneOn_[4] = {};
   uint32_t zoneStarted_[4] = {};
   bool masterOn_ = false, wellOn_ = false, weatherBlock_ = false;
+  bool maintenanceMode_ = false;
   uint32_t irrigationCycleStarted_ = 0;
   int32_t lastScheduleDay_[4] = {-1, -1, -1, -1};
   uint32_t scheduledStopAt_[4] = {};

@@ -10,6 +10,12 @@ void Controller::begin()
   allOffSince_ = millis();
 }
 void Controller::setSensors(const SensorReading r[2]) { memcpy(sensors_, r, sizeof(sensors_)); }
+void Controller::prepareForFirmwareUpdate()
+{
+  maintenanceMode_ = true;
+  stopIrrigation();
+  setWell(false);
+}
 void Controller::onFlowPulse(bool well)
 {
   if (well)
@@ -68,7 +74,7 @@ bool Controller::requestZone(uint8_t z, bool on, bool manual)
     return false;
   if (on)
   {
-    if (criticalFault() || weatherBlock_ || board_.input(Config::RAIN_IN) || board_.input(Config::TANK_EMPTY_IN) || refillState_ != 0)
+    if (criticalFault() || maintenanceMode_ || weatherBlock_ || board_.input(Config::RAIN_IN) || board_.input(Config::TANK_EMPTY_IN) || refillState_ != 0)
       return false;
     if (!masterOn_)
     {
@@ -219,6 +225,12 @@ void Controller::update()
 {
   uint32_t now = millis();
   updateFlow(now);
+  if (maintenanceMode_)
+  {
+    stopIrrigation();
+    setWell(false);
+    return;
+  }
   updateTank(now);
   if (criticalFault())
   {

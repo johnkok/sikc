@@ -2,6 +2,7 @@
 #include "board.h"
 #include "controller.h"
 #include "mqtt.h"
+#include "ota.h"
 #include "sensors.h"
 #include "storage.h"
 #include "config.h"
@@ -11,6 +12,7 @@ Settings settings;
 SoilSensors soil;
 Controller controller(board, settings);
 MqttService mqttService(controller, settings);
+OtaService otaService(controller);
 bool lastIrrFlow = false, lastWellFlow = false;
 
 void setup()
@@ -39,5 +41,6 @@ void loop()
   lastWellFlow = b;
   controller.update();
   mqttService.update(soil.readings());
+  otaService.update();
   delay(2);
 }
