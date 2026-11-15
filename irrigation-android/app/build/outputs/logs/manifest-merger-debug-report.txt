@@ -1,0 +1,304 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:1:1-12:12
+INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:1:1-12:12
+INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:1:1-12:12
+INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:1:1-12:12
+MERGED from [androidx.activity:activity:1.10.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/6ea474a20d9c894241fb437b8c753b38/transformed/activity-1.10.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.material3:material3-android:1.3.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/6d7256c8eb2ddb2eb75c2dea251b6400/transformed/material3-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.material:material-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/2a622938398ea59b41fdcb5964592988/transformed/material-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-core-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/f2b147e5bd2ba78754de9126f4eb509d/transformed/animation-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/aec07be79e18ca61fb3af1e2b544702d/transformed/material-ripple-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/d28ee3ffefd3b12ae2f0a9336f2943f8/transformed/animation-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/af9e7d1bc363ebe34744bc580f4b1dd0/transformed/foundation-layout-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/0df06ed31f08a661b5c269c1d44897b3/transformed/foundation-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/50159c53e573fdbd21c936a3c9eb6e2e/transformed/ui-unit-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/e39f803a6caf5754a63fcddda9dae55d/transformed/ui-graphics-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/5a9e43c528f2522d0df95c44593eb572/transformed/ui-geometry-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/fe97d9158fa9e3d0452c6f9461225110/transformed/ui-tooling-data-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/19edc0e1e9e3336105091680a9400d44/transformed/ui-util-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/b1ee8b7ffca8cdd6ea808408d78aaa0a/transformed/ui-text-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/5fe7790b790b88ddee26eda7b09b5325/transformed/ui-tooling-preview-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/61bb939da888401796ecaeb6e9e1b813/transformed/ui-tooling-release/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/3585fa35a1ee37550e7081c290ab3d7e/transformed/material-icons-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d3fdf239b9efe602898f0831a381af/transformed/ui-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity-ktx:1.10.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/625ec7a904015eb1f111d037aa8a0264/transformed/activity-ktx-1.10.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity-compose:1.10.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/5614e267c3e22cdd2f0577038cdb5106/transformed/activity-compose-1.10.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/6afc823c0ba28657397528eae2d5d5ec/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.autofill:autofill:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1b21b04dda9cbaca3dfce1d3bea953bb/transformed/autofill-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.graphics:graphics-path:1.0.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/51f85c41cfd1156a7bdc55dfced2b687/transformed/graphics-path-1.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/e4a3ff63c40d7790f2255610fa89cb39/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/27a9cb89b5c8e4aea038585f06c8e17a/transformed/core-ktx-1.13.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/2e15b563e3ad3f43e99e86ca1490f8f8/transformed/lifecycle-livedata-core-2.8.3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/3b3f24ac1a9fc2893d7b92a98e1ce635/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/1f152a49a0d83a59fe3077b6f5399800/transformed/lifecycle-runtime-ktx-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/9ab6000b83e1e8514bbe879a77c19997/transformed/lifecycle-runtime-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d99fd21c2f53e4fb9e1cd00016fa3f/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/7605d403a2f3a241d0befbdbf067a423/transformed/lifecycle-viewmodel-ktx-2.8.3/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/6e5114072943e81eef81e88fbe686a8f/transformed/lifecycle-runtime-compose-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/96fbd6e0324e1f189f584878a280f7d6/transformed/lifecycle-viewmodel-savedstate-2.8.3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/acf8c279042ceaeb5d7e35eb729e815b/transformed/savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.runtime:runtime-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/fd78e5af8fede381e6db413cd2bd799c/transformed/runtime-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/be012bc283a0c6b96bc617c08188228e/transformed/runtime-saveable-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/3c8d1ddb5a36f614ffc5f2714c05026b/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/be093fd57b307e12d77c44aa80e04b1c/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0382d63ebef4671d64247ce68bdf79f7/transformed/startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/05a87bacfef24ab1f5b21a16f6db79b0/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0a410bb2e81b1e543f26554a30349f3a/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/7bc35f24587f3bb78de3198123c4fa28/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:2:5-67
+	android:name
+		ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:2:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:3:5-79
+	android:name
+		ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:3:22-76
+application
+ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:4:5-11:19
+INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:4:5-11:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/61bb939da888401796ecaeb6e9e1b813/transformed/ui-tooling-release/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/61bb939da888401796ecaeb6e9e1b813/transformed/ui-tooling-release/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d99fd21c2f53e4fb9e1cd00016fa3f/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d99fd21c2f53e4fb9e1cd00016fa3f/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0382d63ebef4671d64247ce68bdf79f7/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0382d63ebef4671d64247ce68bdf79f7/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0a410bb2e81b1e543f26554a30349f3a/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0a410bb2e81b1e543f26554a30349f3a/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+	android:label
+		ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:4:45-79
+	android:allowBackup
+		ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:4:18-44
+	android:theme
+		ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:4:80-119
+activity#com.kokkoris.irrigation.MainActivity
+ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:5:9-10:20
+	android:exported
+		ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:5:48-71
+	android:name
+		ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:5:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:6:13-9:29
+action#android.intent.action.MAIN
+ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:7:17-69
+	android:name
+		ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:7:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:8:17-77
+	android:name
+		ADDED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml:8:27-74
+uses-sdk
+INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml
+INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml
+MERGED from [androidx.activity:activity:1.10.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/6ea474a20d9c894241fb437b8c753b38/transformed/activity-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.10.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/6ea474a20d9c894241fb437b8c753b38/transformed/activity-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.3.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/6d7256c8eb2ddb2eb75c2dea251b6400/transformed/material3-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.3.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/6d7256c8eb2ddb2eb75c2dea251b6400/transformed/material3-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material:material-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/2a622938398ea59b41fdcb5964592988/transformed/material-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/2a622938398ea59b41fdcb5964592988/transformed/material-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/f2b147e5bd2ba78754de9126f4eb509d/transformed/animation-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/f2b147e5bd2ba78754de9126f4eb509d/transformed/animation-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/aec07be79e18ca61fb3af1e2b544702d/transformed/material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/aec07be79e18ca61fb3af1e2b544702d/transformed/material-ripple-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/d28ee3ffefd3b12ae2f0a9336f2943f8/transformed/animation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/d28ee3ffefd3b12ae2f0a9336f2943f8/transformed/animation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/af9e7d1bc363ebe34744bc580f4b1dd0/transformed/foundation-layout-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/af9e7d1bc363ebe34744bc580f4b1dd0/transformed/foundation-layout-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/0df06ed31f08a661b5c269c1d44897b3/transformed/foundation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/0df06ed31f08a661b5c269c1d44897b3/transformed/foundation-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/50159c53e573fdbd21c936a3c9eb6e2e/transformed/ui-unit-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/50159c53e573fdbd21c936a3c9eb6e2e/transformed/ui-unit-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/e39f803a6caf5754a63fcddda9dae55d/transformed/ui-graphics-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/e39f803a6caf5754a63fcddda9dae55d/transformed/ui-graphics-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/5a9e43c528f2522d0df95c44593eb572/transformed/ui-geometry-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/5a9e43c528f2522d0df95c44593eb572/transformed/ui-geometry-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/fe97d9158fa9e3d0452c6f9461225110/transformed/ui-tooling-data-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/fe97d9158fa9e3d0452c6f9461225110/transformed/ui-tooling-data-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/19edc0e1e9e3336105091680a9400d44/transformed/ui-util-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/19edc0e1e9e3336105091680a9400d44/transformed/ui-util-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/b1ee8b7ffca8cdd6ea808408d78aaa0a/transformed/ui-text-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/b1ee8b7ffca8cdd6ea808408d78aaa0a/transformed/ui-text-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/5fe7790b790b88ddee26eda7b09b5325/transformed/ui-tooling-preview-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/5fe7790b790b88ddee26eda7b09b5325/transformed/ui-tooling-preview-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/61bb939da888401796ecaeb6e9e1b813/transformed/ui-tooling-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/61bb939da888401796ecaeb6e9e1b813/transformed/ui-tooling-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/3585fa35a1ee37550e7081c290ab3d7e/transformed/material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/3585fa35a1ee37550e7081c290ab3d7e/transformed/material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d3fdf239b9efe602898f0831a381af/transformed/ui-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d3fdf239b9efe602898f0831a381af/transformed/ui-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.10.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/625ec7a904015eb1f111d037aa8a0264/transformed/activity-ktx-1.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.10.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/625ec7a904015eb1f111d037aa8a0264/transformed/activity-ktx-1.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.10.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/5614e267c3e22cdd2f0577038cdb5106/transformed/activity-compose-1.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.10.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/5614e267c3e22cdd2f0577038cdb5106/transformed/activity-compose-1.10.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/6afc823c0ba28657397528eae2d5d5ec/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/6afc823c0ba28657397528eae2d5d5ec/transformed/savedstate-ktx-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1b21b04dda9cbaca3dfce1d3bea953bb/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1b21b04dda9cbaca3dfce1d3bea953bb/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.graphics:graphics-path:1.0.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/51f85c41cfd1156a7bdc55dfced2b687/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/51f85c41cfd1156a7bdc55dfced2b687/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/e4a3ff63c40d7790f2255610fa89cb39/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/e4a3ff63c40d7790f2255610fa89cb39/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/27a9cb89b5c8e4aea038585f06c8e17a/transformed/core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/27a9cb89b5c8e4aea038585f06c8e17a/transformed/core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/2e15b563e3ad3f43e99e86ca1490f8f8/transformed/lifecycle-livedata-core-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/2e15b563e3ad3f43e99e86ca1490f8f8/transformed/lifecycle-livedata-core-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/3b3f24ac1a9fc2893d7b92a98e1ce635/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/3b3f24ac1a9fc2893d7b92a98e1ce635/transformed/lifecycle-viewmodel-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/1f152a49a0d83a59fe3077b6f5399800/transformed/lifecycle-runtime-ktx-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/1f152a49a0d83a59fe3077b6f5399800/transformed/lifecycle-runtime-ktx-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/9ab6000b83e1e8514bbe879a77c19997/transformed/lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/9ab6000b83e1e8514bbe879a77c19997/transformed/lifecycle-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d99fd21c2f53e4fb9e1cd00016fa3f/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d99fd21c2f53e4fb9e1cd00016fa3f/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/7605d403a2f3a241d0befbdbf067a423/transformed/lifecycle-viewmodel-ktx-2.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/7605d403a2f3a241d0befbdbf067a423/transformed/lifecycle-viewmodel-ktx-2.8.3/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/6e5114072943e81eef81e88fbe686a8f/transformed/lifecycle-runtime-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/6e5114072943e81eef81e88fbe686a8f/transformed/lifecycle-runtime-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/96fbd6e0324e1f189f584878a280f7d6/transformed/lifecycle-viewmodel-savedstate-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/96fbd6e0324e1f189f584878a280f7d6/transformed/lifecycle-viewmodel-savedstate-2.8.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/acf8c279042ceaeb5d7e35eb729e815b/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/acf8c279042ceaeb5d7e35eb729e815b/transformed/savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/fd78e5af8fede381e6db413cd2bd799c/transformed/runtime-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/fd78e5af8fede381e6db413cd2bd799c/transformed/runtime-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/be012bc283a0c6b96bc617c08188228e/transformed/runtime-saveable-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/be012bc283a0c6b96bc617c08188228e/transformed/runtime-saveable-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/3c8d1ddb5a36f614ffc5f2714c05026b/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/3c8d1ddb5a36f614ffc5f2714c05026b/transformed/annotation-experimental-1.4.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/be093fd57b307e12d77c44aa80e04b1c/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/be093fd57b307e12d77c44aa80e04b1c/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0382d63ebef4671d64247ce68bdf79f7/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0382d63ebef4671d64247ce68bdf79f7/transformed/startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/05a87bacfef24ab1f5b21a16f6db79b0/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/05a87bacfef24ab1f5b21a16f6db79b0/transformed/tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0a410bb2e81b1e543f26554a30349f3a/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0a410bb2e81b1e543f26554a30349f3a/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/7bc35f24587f3bb78de3198123c4fa28/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/7bc35f24587f3bb78de3198123c4fa28/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/johnkokko/Projects/smartirrigation_kc/irrigation-android/app/src/main/AndroidManifest.xml
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/61bb939da888401796ecaeb6e9e1b813/transformed/ui-tooling-release/AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/61bb939da888401796ecaeb6e9e1b813/transformed/ui-tooling-release/AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.7.6] /home/johnkokko/.gradle/caches/9.3.0/transforms/61bb939da888401796ecaeb6e9e1b813/transformed/ui-tooling-release/AndroidManifest.xml:24:13-71
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d99fd21c2f53e4fb9e1cd00016fa3f/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d99fd21c2f53e4fb9e1cd00016fa3f/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0382d63ebef4671d64247ce68bdf79f7/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/0382d63ebef4671d64247ce68bdf79f7/transformed/startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/1e681d3d9a46dcc64aed5dc782e6466a/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+permission#com.kokkoris.irrigation.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+uses-permission#com.kokkoris.irrigation.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/johnkokko/.gradle/caches/9.3.0/transforms/e30e49f474962a2d9c92706e672dbb29/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d99fd21c2f53e4fb9e1cd00016fa3f/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d99fd21c2f53e4fb9e1cd00016fa3f/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.3] /home/johnkokko/.gradle/caches/9.3.0/transforms/30d99fd21c2f53e4fb9e1cd00016fa3f/transformed/lifecycle-process-2.8.3/AndroidManifest.xml:30:17-78
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /home/johnkokko/.gradle/caches/9.3.0/transforms/66d83d9ab0525172461c3f918b84dde5/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
