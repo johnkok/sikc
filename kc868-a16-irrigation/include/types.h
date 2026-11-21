@@ -55,4 +55,5 @@ struct Settings
   float minWellFlowLpm = 0.25f;
   float leakFlowLpm = 0.20f;
   bool requireFullBeforeResume = true;
+  uint8_t displayBrightness = 8; // percent, 0 turns the matrices off
 };

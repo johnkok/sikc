@@ -19,31 +19,27 @@ Wireless updating uses ArduinoOTA on the local network. It does not provide an i
 
 The password is compiled into the firmware. It protects upload authorization but is not a substitute for an isolated network. Do not reuse the Wi-Fi or MQTT password.
 
-## PlatformIO upload
+## Build and upload
 
-The OTA environment is already defined in `platformio.ini`:
+The normal PlatformIO `espota` upload currently enables its uploader's debug output. That debug output includes the plaintext authentication value, so the one-command `pio run -e kc868-a16-ota -t upload` workflow is not recommended in shared terminals, IDE logs, or CI systems.
 
-```sh
-cd kc868-a16-irrigation
-pio run -e kc868-a16-ota -t upload --upload-port kc868-a16-irrigation.local
-```
+Build the image first, then invoke the same Espressif uploader without `--debug`:
 
-Pass the password to PlatformIO's official `espota` uploader without saving it in the repository. In Bash, this avoids placing the password in shell history:
+```bash
+pio run -e kc868-a16-ota
 
-```sh
 read -rsp "OTA password: " KC_OTA_PASSWORD; printf '\n'
-PLATFORMIO_UPLOAD_FLAGS="--auth=${KC_OTA_PASSWORD}" \
-  pio run -e kc868-a16-ota -t upload --upload-port kc868-a16-irrigation.local
-unset KC_OTA_PASSWORD
+KC_PIO_HOME="${PLATFORMIO_CORE_DIR:-$HOME/.platformio}"
+python3 "$KC_PIO_HOME/packages/framework-arduinoespressif32/tools/espota.py" \
+  -i kc868-a16-irrigation.local \
+  -a "$KC_OTA_PASSWORD" \
+  -f .pio/build/kc868-a16-ota/firmware.bin
+unset KC_OTA_PASSWORD KC_PIO_HOME
 ```
 
-`PLATFORMIO_UPLOAD_FLAGS` sets PlatformIO's `upload_flags` option for that process. Do not put a plaintext `--auth` value in version-controlled `platformio.ini`.
+The default hostname is `kc868-a16-irrigation.local`. If mDNS is unavailable, replace it after `-i` with the DHCP address printed by the serial monitor and reserve that address in DHCP. The direct uploader avoids printing the password, but the value is briefly visible in the local process arguments; perform uploads only from a trusted computer.
 
-If mDNS is unavailable, replace the hostname with the board's DHCP address:
-
-Use the same authenticated command above but replace the final hostname with `192.168.1.50`.
-
-Reserve the address in DHCP so it remains predictable.
+Do not store the password in `platformio.ini`, commit it to the repository, type it directly into a shell-history command, or expose it in an IDE/CI variable dump. If output ever contains a debug `Options` line showing the `auth` value, treat the password as exposed: change `OTA_PASSWORD` in `include/secrets.h` and perform the next upload over USB.
 
 ## Safe update sequence
 
@@ -56,5 +52,5 @@ Do not remove power during flash writing. Keep USB access available as the recov
 - **No OTA-ready serial message:** confirm Wi-Fi association and that `OTA_PASSWORD` exists and has at least eight characters.
 - **Hostname not found:** use the DHCP IP; mDNS may be blocked between VLANs or unsupported on the host.
 - **Authentication failure:** ensure the local `secrets.h` password matches the running firmware.
-- **Connection timeout:** keep the computer and board on routable local networks and allow mDNS/ArduinoOTA traffic through the host firewall.
+- **Connection timeout:** keep the computer and board on routable local networks and allow ArduinoOTA traffic on port 3232 through the host firewall. A direct TCP probe may be refused while the board is idle because the real exchange begins with a UDP invitation and the board connects back to the uploader.
 - **Upload aborts:** the controller intentionally remains in maintenance mode for that boot. Reboot after checking network stability, then retry or recover through USB.

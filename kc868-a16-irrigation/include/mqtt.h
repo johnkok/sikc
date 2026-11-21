@@ -8,6 +8,7 @@ public:
     void begin();
     void update(const SensorReading sensors[2]);
     void command(char *topic, byte *payload, unsigned int len);
+    bool connected() const;
 
 private:
     void connect();

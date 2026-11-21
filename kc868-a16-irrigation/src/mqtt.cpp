@@ -13,6 +13,7 @@ static void callback(char *t, byte *p, unsigned int l)
   if (self)
     self->command(t, p, l);
 }
+bool MqttService::connected() const { return mqtt.connected(); }
 void MqttService::begin()
 {
   self = this;
@@ -69,14 +70,19 @@ void MqttService::publishDiscovery()
   entity("switch", "weather_block", "Weather block", st, "{{ value_json.weather_block }}", String(Config::MQTT_PREFIX) + "/cmd/weather_block");
   entity("button", "clear_faults", "Clear faults", "", "", String(Config::MQTT_PREFIX) + "/cmd/clear_faults");
   entity("sensor", "tank_state", "Tank state", st, "{{ value_json.tank_state }}");
-  entity("binary_sensor", "well_pump", "Well pump", st, "{{ value_json.well_pump }}");
+  if (Config::ENABLE_WELL_MANAGEMENT)
+    entity("binary_sensor", "well_pump", "Well pump", st, "{{ value_json.well_pump }}");
   entity("binary_sensor", "maintenance_mode", "Maintenance mode", st, "{{ 'ON' if value_json.maintenance_mode else 'OFF' }}");
   entity("sensor", "faults", "Fault mask", st, "{{ value_json.faults }}");
-  entity("sensor", "irrigation_flow", "Irrigation flow", st, "{{ value_json.irrigation_lpm }}", "", "L/min", "measurement", "volume_flow_rate");
-  entity("sensor", "well_flow", "Well flow", st, "{{ value_json.well_lpm }}", "", "L/min", "measurement", "volume_flow_rate");
-  entity("sensor", "irrigation_water", "Irrigation water", st, "{{ value_json.irrigation_liters }}", "", "L", "total_increasing", "volume");
-  entity("sensor", "well_water", "Well water", st, "{{ value_json.well_liters }}", "", "L", "total_increasing", "volume");
-  for (int i = 0; i < 2; i++)
+  if (Config::ENABLE_FLOW_SENSORS)
+  {
+    entity("sensor", "irrigation_flow", "Irrigation flow", st, "{{ value_json.irrigation_lpm }}", "", "L/min", "measurement", "volume_flow_rate");
+    entity("sensor", "well_flow", "Well flow", st, "{{ value_json.well_lpm }}", "", "L/min", "measurement", "volume_flow_rate");
+    entity("sensor", "irrigation_water", "Irrigation water", st, "{{ value_json.irrigation_liters }}", "", "L", "total_increasing", "volume");
+    entity("sensor", "well_water", "Well water", st, "{{ value_json.well_liters }}", "", "L", "total_increasing", "volume");
+  }
+  if (Config::ENABLE_SOIL_SENSORS)
+    for (int i = 0; i < 2; i++)
   {
     entity("sensor", "soil" + String(i + 1) + "_moisture", "Soil " + String(i + 1) + " moisture", st, ("{{ value_json.soil" + String(i + 1) + "_moisture }}").c_str(), "", "%", "measurement");
     entity("sensor", "soil" + String(i + 1) + "_temperature", "Soil " + String(i + 1) + " temperature", st, ("{{ value_json.soil" + String(i + 1) + "_temperature }}").c_str(), "", "°C", "measurement", "temperature");
@@ -130,6 +136,7 @@ void MqttService::command(char *topic, byte *payload, unsigned int len)
     settings_.refillDelaySec = d["refill_delay_sec"] | settings_.refillDelaySec;
     settings_.minPumpOffSec = d["min_pump_off_sec"] | settings_.minPumpOffSec;
     settings_.maxRefillSec = d["max_refill_sec"] | settings_.maxRefillSec;
+    settings_.displayBrightness = constrain(d["display_brightness"] | settings_.displayBrightness, 0, 100);
     saveSettings(settings_);
     return;
   }
@@ -159,6 +166,7 @@ void MqttService::publishState(const SensorReading s[2])
   d["well_liters"] = controller_.wellLiters();
   d["weather_block"] = controller_.weatherBlocked() ? "ON" : "OFF";
   d["maintenance_mode"] = controller_.maintenanceMode();
+  d["display_brightness"] = settings_.displayBrightness;
   for (int i = 0; i < 2; i++)
   {
     if (s[i].valid)

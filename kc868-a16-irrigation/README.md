@@ -1,6 +1,6 @@
 # KC868-A16 irrigation and buffer-tank controller
 
-PlatformIO/Arduino firmware for the **original ESP32 KC868-A16**. It controls four irrigation zones, a master valve, tank outlet pump, well-pump contactor, and alarm through suitable external interfaces. It reads two Modbus soil probes, two pulse flow meters, rain, tank floats, and well protection contacts. Status and commands are available through MQTT, automatic Home Assistant discovery, the companion Android app, and password-protected Wi-Fi firmware updates.
+PlatformIO/Arduino firmware for the **original ESP32 KC868-A16**. It controls four irrigation zones, a master valve, tank outlet pump, well-pump contactor, and alarm through suitable external interfaces. It reads two Modbus soil probes, two pulse flow meters, rain, tank floats, and well protection contacts. Status is shown on two optional daisy-chained WS2812B 8x8 matrices and is also available through MQTT, automatic Home Assistant discovery, the companion Android app, and password-protected Wi-Fi firmware updates.
 
 ## Documentation
 
@@ -53,7 +53,33 @@ Inputs are assumed active when closed to the A16 input common. Outputs are confi
 4. Set the two soil probes to Modbus IDs 1 and 2 at 9600 8N1.
 5. Verify the board revision, I/O polarity, and probe register map in `include/config.h` before connecting field loads.
 
-The first upload must use USB. After the board joins Wi-Fi, use `pio run -e kc868-a16-ota -t upload`; see [OTA.md](docs/OTA.md).
+Optional status matrices use GPIO32/HT1 and an external 5 V supply. See [HARDWARE.md](docs/HARDWARE.md#ws2812b-status-matrices) before connecting them. Fresh settings default to 8% brightness; the Android status screen can save a persistent value from 0–100%.
+
+## Wi-Fi OTA updates
+
+The first firmware upload, and any OTA password change, must be performed over USB. Set a unique `OTA_PASSWORD` of at least eight characters in the ignored `include/secrets.h`, upload the firmware, and confirm the serial monitor reports:
+
+```text
+OTA ready at kc868-a16-irrigation.local (<device-ip>)
+```
+
+For later updates, build the OTA image and run Espressif's uploader directly without its debug flag. This avoids PlatformIO's current ESP32 OTA command printing the password in terminal or CI logs:
+
+```bash
+pio run -e kc868-a16-ota
+
+read -rsp "OTA password: " KC_OTA_PASSWORD; printf '\n'
+KC_PIO_HOME="${PLATFORMIO_CORE_DIR:-$HOME/.platformio}"
+python3 "$KC_PIO_HOME/packages/framework-arduinoespressif32/tools/espota.py" \
+  -i kc868-a16-irrigation.local \
+  -a "$KC_OTA_PASSWORD" \
+  -f .pio/build/kc868-a16-ota/firmware.bin
+unset KC_OTA_PASSWORD KC_PIO_HOME
+```
+
+Replace the hostname with the board's DHCP IP if mDNS is unavailable. A successful upload ends with `Result: OK` and `Success`; the controller then reboots into the new firmware. During an update, all outputs are switched off. If an upload fails after it starts, reboot or power-cycle the controller before returning it to service.
+
+OTA is intended only for a trusted local network or VPN. Do not expose port 3232 to the internet, put the password in `platformio.ini`, or type it directly into a command saved in shell history. The password is still briefly present in the local uploader process arguments, so run uploads only from a trusted computer. See [OTA.md](docs/OTA.md) for verification, troubleshooting, password rotation, and recovery details.
 
 ## USB-RS485 soil probe utility
 

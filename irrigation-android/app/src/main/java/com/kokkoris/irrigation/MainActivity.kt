@@ -137,6 +137,39 @@ fun StatusScreen(repo: MqttRepository) {
             Text("Weather/rain block", Modifier.weight(1f))
             Switch(s.weatherBlock, { repo.setWeatherBlock(it) }, enabled = s.connected)
         }
+        DisplayBrightnessCard(repo, s.displayBrightness)
+    }
+}
+
+@Composable
+fun DisplayBrightnessCard(repo: MqttRepository, currentBrightness: Int) {
+    var brightness by remember(currentBrightness) { mutableFloatStateOf(currentBrightness.toFloat()) }
+    ElevatedCard(Modifier.fillMaxWidth()) {
+        Column(
+            Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Text("Status display", fontWeight = FontWeight.Bold)
+            Text("Brightness: ${brightness.toInt()}%")
+            Slider(
+                value = brightness,
+                onValueChange = { brightness = it },
+                valueRange = 0f..100f,
+                steps = 19,
+                enabled = repo.state.connected
+            )
+            Text(
+                "The controller starts at 8%. Higher settings require a suitably rated external 5 V supply.",
+                style = MaterialTheme.typography.bodySmall
+            )
+            Button(
+                onClick = { repo.setDisplayBrightness(brightness.toInt()) },
+                enabled = repo.state.connected,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Save display brightness")
+            }
+        }
     }
 }
 

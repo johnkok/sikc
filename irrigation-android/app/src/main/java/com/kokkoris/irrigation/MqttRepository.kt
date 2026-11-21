@@ -113,6 +113,13 @@ class MqttRepository(private val context: Context) {
     fun setWeatherBlock(on: Boolean) = publish("weather_block", if (on) "ON" else "OFF")
     fun clearFaults() = publish("clear_faults", "PRESS")
 
+    fun setDisplayBrightness(percent: Int) {
+        val value = percent.coerceIn(0, 100)
+        publish("config/system", JSONObject().put("display_brightness", value).toString())
+        state = state.copy(displayBrightness = value)
+        message = "Display brightness sent to controller"
+    }
+
     fun savePlan(index: Int, p: ZonePlan) {
         val j = JSONObject()
             .put("automatic", p.automatic)
@@ -161,6 +168,7 @@ class MqttRepository(private val context: Context) {
                 wellLpm = j.optDouble("well_lpm"),
                 irrigationLiters = j.optDouble("irrigation_liters"),
                 wellLiters = j.optDouble("well_liters"),
+                displayBrightness = j.optInt("display_brightness", 8).coerceIn(0, 100),
                 zones = List(4) { j.optString("zone${it + 1}") == "ON" },
                 soilMoisture = List(2) { if (j.isNull("soil${it + 1}_moisture")) null else j.optDouble("soil${it + 1}_moisture") },
                 soilTemperature = List(2) { if (j.isNull("soil${it + 1}_temperature")) null else j.optDouble("soil${it + 1}_temperature") },

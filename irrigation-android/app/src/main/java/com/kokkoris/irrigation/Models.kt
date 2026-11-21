@@ -5,6 +5,7 @@ data class ZonePlan(val automatic:Boolean=true,val sensorIndex:Int=-1,val startM
 data class BoardState(
     val connected:Boolean=false,val tankState:String="unknown",val faults:Int=0,val wellPump:Boolean=false,val weatherBlock:Boolean=false,
     val irrigationLpm:Double=0.0,val wellLpm:Double=0.0,val irrigationLiters:Double=0.0,val wellLiters:Double=0.0,
+    val displayBrightness:Int=8,
     val zones:List<Boolean> = List(4){false},val soilMoisture:List<Double?> = List(2){null},val soilTemperature:List<Double?> = List(2){null},
     val plans:List<ZonePlan> = List(4){ZonePlan(sensorIndex=if(it<2)it else -1)}
 )

@@ -8,9 +8,33 @@ This pin map targets the original ESP32-based KinCony KC868-A16, not the A16 V3 
 - input PCF8574 addresses `0x21`, `0x22`
 - output PCF8574 addresses `0x24`, `0x25`
 - RS-485 RX GPIO 16, TX GPIO 13, 9600 8N1
+- WS2812B display data GPIO 32 (HT1), two 8x8 matrices daisy-chained
 - active-low expander inputs and outputs
 
 If any item differs, adapt the configuration and bench-test before attaching valves or contactors.
+
+## Optional subsystem switches
+
+`include/config.h` provides four compile-time switches, all enabled by default:
+
+| Switch | Effect when `false` |
+|---|---|
+| `ENABLE_RAIN_SENSOR` | IN2 is ignored as a watering block. The MQTT weather block still works. |
+| `ENABLE_FLOW_SENSORS` | IN1/IN7 pulses, water totals, flow readings, no-flow faults, and leak faults are disabled. |
+| `ENABLE_SOIL_SENSORS` | RS-485 polling and moisture-based automatic start/stop are disabled. Manual and scheduled zones still work. |
+| `ENABLE_WELL_MANAGEMENT` | Well overload/dry-run monitoring and automatic refill are disabled, and OUT6 remains off. Tank EMPTY/FULL protection remains active. |
+
+Change only the required values to `false`, rebuild, and recommission the affected inputs and safety behavior. Disabling a sensor also disables the protection derived from it; do not disable an independent physical motor or electrical protection.
+
+## WS2812B status matrices
+
+The firmware drives 128 pixels as two daisy-chained 8x8 WS2812B modules. Connect GPIO32/HT1 through a 5 V logic-level shifter such as a 74AHCT125 and a 330–470 ohm series resistor to the first module's `DIN`; connect its `DOUT` to the second module's `DIN`. Both modules must share ground with the controller.
+
+Power the matrices from a separate regulated and fused 5 V supply. Do not power them from the A16 sensor connector. Two 64-pixel modules can approach 7.7 A at full-white maximum brightness. Feed 5 V and ground to each module, add bulk capacitance near the modules, and size the supply and wiring for the configured maximum. Firmware defaults to 8% brightness, and the Android app can set a persistent value from 0–100%.
+
+The pixel mapping assumes the common serpentine-row 8x8 layout, with the second module continuing at pixel 64. If a module has a different physical pixel order or mounting rotation, adjust `StatusDisplay::setPixel()` before installation.
+
+The first panel shows controller state: a green check is idle, a blue number is the active zone, an animated tank is refill, an amber slash is weather block, and a red X is a fault. Its bottom-left pixels show Wi-Fi and MQTT connectivity in green or red. The second panel cycles every three seconds through temperature (orange) and moisture (blue) for probes 1 and 2. One or two top-right pixels identify the probe. During OTA, both panels become a progress display; completion shows green checks and an OTA error shows red crosses.
 
 ## Field I/O assignment
 
@@ -49,7 +73,14 @@ Have mains and pump wiring designed and checked by a qualified electrician.
 
 Wire both probes on one A/B bus with a shared reference as required by their manuals. Use a daisy chain, avoid star stubs, and fit termination/biasing only as the bus hardware and probe documentation require. Power the probes from a supply of the specified voltage; do not assume the A16 can power them.
 
-Each probe needs a unique address. Firmware defaults are ID 1 and ID 2. The expected seven holding registers from `0x0000` are temperature (signed, ÷10), moisture (÷10), EC, pH (÷10), nitrogen, phosphorus, and potassium. Probe vendors vary, so verify addresses, function code, byte order, scaling, and supply requirements against the supplied manual.
+Each probe needs a unique address. The configured addresses are listed in `SENSOR_IDS` (currently IDs 2 and 3). The expected seven holding registers from `0x0000` are temperature (signed, ÷10), moisture (÷10), EC, pH (÷10), nitrogen, phosphorus, and potassium. Probe vendors vary, so verify addresses, function code, byte order, scaling, and supply requirements against the supplied manual.
+
+Soil timing is configured in `include/config.h`:
+
+- `SOIL_UPDATE_INTERVAL_MS` controls how often each probe receives a complete seven-register read. The two probe reads are staggered evenly within that interval.
+- `SOIL_STALE_AFTER_MS` controls how long the last successful value remains valid after Modbus failures.
+
+Keep `SOIL_STALE_AFTER_MS` longer than `SOIL_UPDATE_INTERVAL_MS`. Very short update intervals can overload slow probes or the 9600-baud RS-485 bus; the driver enforces a minimum 250 ms spacing between transactions.
 
 ## Float and contact polarity
 

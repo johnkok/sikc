@@ -34,7 +34,7 @@ void Controller::latch(Fault f)
 bool Controller::criticalFault() const { return faults_ != 0; }
 void Controller::clearFaults()
 {
-  if (board_.input(Config::WELL_FAULT_IN) || board_.input(Config::WELL_DRY_IN))
+  if (Config::ENABLE_WELL_MANAGEMENT && (board_.input(Config::WELL_FAULT_IN) || board_.input(Config::WELL_DRY_IN)))
     return;
   if (board_.input(Config::TANK_EMPTY_IN) && board_.input(Config::TANK_FULL_IN))
     return;
@@ -74,7 +74,8 @@ bool Controller::requestZone(uint8_t z, bool on, bool manual)
     return false;
   if (on)
   {
-    if (criticalFault() || maintenanceMode_ || weatherBlock_ || board_.input(Config::RAIN_IN) || board_.input(Config::TANK_EMPTY_IN) || refillState_ != 0)
+    const bool rainBlocked = Config::ENABLE_RAIN_SENSOR && board_.input(Config::RAIN_IN);
+    if (criticalFault() || maintenanceMode_ || weatherBlock_ || rainBlocked || board_.input(Config::TANK_EMPTY_IN) || refillState_ != 0)
       return false;
     if (!masterOn_)
     {
@@ -116,6 +117,14 @@ void Controller::updateTank(uint32_t now)
     latch(Fault::TankSensors);
     return;
   }
+  if (!Config::ENABLE_WELL_MANAGEMENT)
+  {
+    if (empty)
+      stopIrrigation();
+    refillState_ = 0;
+    setWell(false);
+    return;
+  }
   if (board_.input(Config::WELL_FAULT_IN))
   {
     latch(Fault::WellOverload);
@@ -151,7 +160,7 @@ void Controller::updateTank(uint32_t now)
       latch(Fault::RefillTimeout);
       return;
     }
-    if (now - wellStarted_ >= settings_.noFlowTimeoutSec * 1000UL && wellLpm_ < settings_.minWellFlowLpm)
+    if (Config::ENABLE_FLOW_SENSORS && now - wellStarted_ >= settings_.noFlowTimeoutSec * 1000UL && wellLpm_ < settings_.minWellFlowLpm)
       latch(Fault::WellNoFlow);
   }
 }
@@ -165,7 +174,7 @@ void Controller::updateIrrigation(uint32_t now)
     {
       auto &zc = settings_.zones[z];
       int8_t si = zc.sensorIndex;
-      if (zc.automatic && si >= 0 && si < 2 && sensors_[si].valid && sensors_[si].moisture <= zc.startMoisture)
+      if (Config::ENABLE_SOIL_SENSORS && zc.automatic && si >= 0 && si < 2 && sensors_[si].valid && sensors_[si].moisture <= zc.startMoisture)
         requestZone(z, true);
       auto &sc = zc.schedule;
       if (haveTime && sc.enabled && (sc.days & (1u << tmNow.tm_wday)) && tmNow.tm_hour == sc.hour && tmNow.tm_min == sc.minute && lastScheduleDay_[z] != dayKey)
@@ -187,7 +196,7 @@ void Controller::updateIrrigation(uint32_t now)
       if (now - zoneStarted_[z] >= settings_.zones[z].maxRuntimeMin * 60000UL)
         requestZone(z, false);
       int8_t si = settings_.zones[z].sensorIndex;
-      if (settings_.zones[z].automatic && si >= 0 && si < 2 && sensors_[si].valid && sensors_[si].moisture >= settings_.zones[z].stopMoisture)
+      if (Config::ENABLE_SOIL_SENSORS && settings_.zones[z].automatic && si >= 0 && si < 2 && sensors_[si].valid && sensors_[si].moisture >= settings_.zones[z].stopMoisture)
         requestZone(z, false);
     }
   any = false;
@@ -201,13 +210,22 @@ void Controller::updateIrrigation(uint32_t now)
     allOffSince_ = now;
     irrigationCycleStarted_ = 0;
   }
-  if (any && irrigationCycleStarted_ && now - irrigationCycleStarted_ >= Config::FLOW_GRACE_MS && irrigationLpm_ < settings_.minIrrigationFlowLpm)
-    latch(Fault::IrrigationNoFlow);
-  if (!any && !masterOn_ && now - allOffSince_ > Config::FLOW_GRACE_MS && irrigationLpm_ > settings_.leakFlowLpm)
-    latch(Fault::Leak);
+  if (Config::ENABLE_FLOW_SENSORS)
+  {
+    if (any && irrigationCycleStarted_ && now - irrigationCycleStarted_ >= Config::FLOW_GRACE_MS && irrigationLpm_ < settings_.minIrrigationFlowLpm)
+      latch(Fault::IrrigationNoFlow);
+    if (!any && !masterOn_ && now - allOffSince_ > Config::FLOW_GRACE_MS && irrigationLpm_ > settings_.leakFlowLpm)
+      latch(Fault::Leak);
+  }
 }
 void Controller::updateFlow(uint32_t now)
 {
+  if (!Config::ENABLE_FLOW_SENSORS)
+  {
+    irrigationPulses_ = wellPulses_ = 0;
+    irrigationLpm_ = wellLpm_ = 0;
+    return;
+  }
   if (now - lastFlowCalc_ < Config::FLOW_WINDOW_MS)
     return;
   uint32_t dt = now - lastFlowCalc_;

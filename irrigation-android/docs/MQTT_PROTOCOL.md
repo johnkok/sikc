@@ -8,7 +8,8 @@ Default prefix: `garden/irrigation`
 | App → board | `cmd/weather_block` | `ON` or `OFF` |
 | App → board | `cmd/clear_faults` | `PRESS` |
 | App → board | `cmd/config/zone1` … `cmd/config/zone4` | Plan JSON below |
-| Board → app | `state` | Retained state JSON, including `plans` array |
+| App → board | `cmd/config/system` | System JSON, including `display_brightness` from 0–100 |
+| Board → app | `state` | Retained state JSON, including `plans` and `display_brightness` |
 
 Plan JSON fields:
 
@@ -28,4 +29,12 @@ Plan JSON fields:
 ```
 
 `days` is a bit mask: bit 0 Sunday through bit 6 Saturday. The firmware validates times and ensures stop moisture is above start moisture before saving the plan to NVS.
+
+Display brightness is persistent and expressed as a percentage. Zero switches the matrices off. The default after a fresh installation is deliberately low:
+
+```json
+{
+  "display_brightness": 8
+}
+```
 

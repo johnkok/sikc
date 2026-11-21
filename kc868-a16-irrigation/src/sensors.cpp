@@ -13,7 +13,9 @@ void SoilSensors::update()
 {
   uint32_t now = millis();
 
-  if (now - lastPoll_ < Config::SENSOR_POLL_MS / 2)
+  const uint32_t configuredSpacing = Config::SOIL_UPDATE_INTERVAL_MS / Config::SENSOR_COUNT;
+  const uint32_t readSpacing = configuredSpacing < 250 ? 250 : configuredSpacing;
+  if (now - lastPoll_ < readSpacing)
     return;
 
   Serial.println("Sensor update");
@@ -36,7 +38,7 @@ void SoilSensors::update()
     r.lastOkMs = now;
     Serial.println("Sensor success");
   }
-  else if (now - r.lastOkMs > 60000)
+  else if (now - r.lastOkMs > Config::SOIL_STALE_AFTER_MS)
     r.valid = false;
   next_ = (next_ + 1) % Config::SENSOR_COUNT;
 }

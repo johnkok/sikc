@@ -29,13 +29,14 @@ void OtaService::begin()
   ArduinoOTA.onStart([this]()
                      {
     controller_.prepareForFirmwareUpdate();
+    display_.otaStarted();
     Serial.println("OTA update started; all controlled outputs are OFF"); });
-  ArduinoOTA.onEnd([]()
-                   { Serial.println("\nOTA update complete; rebooting"); });
-  ArduinoOTA.onProgress([](unsigned int progress, unsigned int total)
-                        { Serial.printf("OTA progress: %u%%\r", (progress * 100U) / total); });
-  ArduinoOTA.onError([](ota_error_t error)
-                     { Serial.printf("\nOTA error %u\n", error); });
+  ArduinoOTA.onEnd([this]()
+                   { display_.otaFinished(); Serial.println("\nOTA update complete; rebooting"); });
+  ArduinoOTA.onProgress([this](unsigned int progress, unsigned int total)
+                        { const uint8_t percent = (progress * 100U) / total; display_.otaProgress(percent); Serial.printf("OTA progress: %u%%\r", percent); });
+  ArduinoOTA.onError([this](ota_error_t error)
+                     { display_.otaError(); Serial.printf("\nOTA error %u\n", error); });
   ArduinoOTA.begin();
   started_ = true;
   Serial.printf("OTA ready at %s.local (%s)\n", Config::OTA_HOSTNAME, WiFi.localIP().toString().c_str());
