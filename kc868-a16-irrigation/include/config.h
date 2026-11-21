@@ -34,7 +34,16 @@ namespace Config
     constexpr uint16_t DISPLAY_PIXEL_COUNT = 128;
     constexpr uint8_t DISPLAY_MATRIX_WIDTH = 8;
     constexpr uint8_t DISPLAY_MATRIX_HEIGHT = 8;
+    // These 8x8 modules use progressive row-major pixel order. Change to true
+    // only for panels whose data path reverses direction on alternate rows.
+    constexpr bool DISPLAY_SERPENTINE_ROWS = false;
+    // Per-panel mounting corrections for the first and second module in the
+    // data chain. Toggle these if a panel is physically mirrored or rotated.
+    constexpr bool DISPLAY_FLIP_X[2] = {false, false};
+    constexpr bool DISPLAY_FLIP_Y[2] = {false, false};
+    constexpr bool DISPLAY_REVERSE_CHAIN = false;
     constexpr uint32_t DISPLAY_REFRESH_MS = 250;
+    constexpr uint32_t DISPLAY_STATUS_PAGE_MS = 2000;
     constexpr uint8_t DISPLAY_DEFAULT_BRIGHTNESS = 8; // percent
 
     constexpr uint8_t FLOW_IRRIGATION_IN = 0; // IN1

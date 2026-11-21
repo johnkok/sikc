@@ -26,6 +26,12 @@ private:
   void drawNumber(uint8_t matrix, int value, uint32_t color);
   void drawX(uint8_t matrix, uint32_t color);
   void drawCheck(uint8_t matrix, uint32_t color);
+  void drawWifi(uint8_t matrix, uint32_t color);
+  void drawMqtt(uint8_t matrix, uint32_t color);
+  void drawRain(uint8_t matrix, uint32_t color);
+  void drawValve(uint8_t matrix, int8_t activeZone, uint32_t color);
+  void drawWell(uint8_t matrix, uint32_t color);
+  void drawFlow(uint8_t matrix, uint32_t irrigationColor, uint32_t wellColor);
 
   Controller &controller_;
   Settings &settings_;

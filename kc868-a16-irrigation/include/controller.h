@@ -25,6 +25,7 @@ public:
   bool masterOn() const { return masterOn_; }
   bool filling() const { return refillState_ != 0; }
   float irrigationLpm() const { return irrigationLpm_; }
+  bool rainActive() const;
   bool weatherBlocked() const { return weatherBlock_; }
   bool maintenanceMode() const { return maintenanceMode_; }
   float wellLpm() const { return wellLpm_; }

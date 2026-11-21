@@ -33,9 +33,15 @@ void StatusDisplay::setPixel(uint8_t matrix, int8_t x, int8_t y, uint32_t color)
 {
   if (matrix > 1 || x < 0 || x >= Config::DISPLAY_MATRIX_WIDTH || y < 0 || y >= Config::DISPLAY_MATRIX_HEIGHT)
     return;
-  // Common 8x8 WS2812B modules use alternating row direction.
-  uint16_t local = y * Config::DISPLAY_MATRIX_WIDTH + ((y & 1) ? (7 - x) : x);
-  pixels_.setPixelColor(matrix * 64 + local, color);
+  if (Config::DISPLAY_FLIP_X[matrix])
+    x = Config::DISPLAY_MATRIX_WIDTH - 1 - x;
+  if (Config::DISPLAY_FLIP_Y[matrix])
+    y = Config::DISPLAY_MATRIX_HEIGHT - 1 - y;
+  if (Config::DISPLAY_SERPENTINE_ROWS && (y & 1))
+    x = Config::DISPLAY_MATRIX_WIDTH - 1 - x;
+  const uint16_t local = y * Config::DISPLAY_MATRIX_WIDTH + x;
+  const uint8_t chainMatrix = Config::DISPLAY_REVERSE_CHAIN ? 1 - matrix : matrix;
+  pixels_.setPixelColor(chainMatrix * Config::DISPLAY_MATRIX_WIDTH * Config::DISPLAY_MATRIX_HEIGHT + local, color);
 }
 
 void StatusDisplay::drawDigit(uint8_t matrix, int8_t x, int8_t y, uint8_t digit, uint32_t color)
@@ -81,6 +87,72 @@ void StatusDisplay::drawCheck(uint8_t matrix, uint32_t color)
   setPixel(matrix, 4, 5, color); setPixel(matrix, 5, 4, color); setPixel(matrix, 6, 3, color);
 }
 
+void StatusDisplay::drawWifi(uint8_t matrix, uint32_t color)
+{
+  for (uint8_t x = 1; x < 7; x++) setPixel(matrix, x, 1, color);
+  setPixel(matrix, 1, 2, color); setPixel(matrix, 6, 2, color);
+  for (uint8_t x = 2; x < 6; x++) setPixel(matrix, x, 3, color);
+  setPixel(matrix, 2, 4, color); setPixel(matrix, 5, 4, color);
+  setPixel(matrix, 3, 5, color); setPixel(matrix, 4, 5, color);
+  setPixel(matrix, 3, 7, color); setPixel(matrix, 4, 7, color);
+}
+
+void StatusDisplay::drawMqtt(uint8_t matrix, uint32_t color)
+{
+  for (uint8_t y = 1; y < 7; y++)
+  {
+    setPixel(matrix, 1, y, color);
+    setPixel(matrix, 6, y, color);
+  }
+  setPixel(matrix, 2, 2, color); setPixel(matrix, 5, 2, color);
+  setPixel(matrix, 3, 3, color); setPixel(matrix, 4, 3, color);
+}
+
+void StatusDisplay::drawRain(uint8_t matrix, uint32_t color)
+{
+  for (uint8_t x = 2; x < 6; x++) setPixel(matrix, x, 2, color);
+  for (uint8_t x = 1; x < 7; x++) setPixel(matrix, x, 3, color);
+  setPixel(matrix, 1, 2, color); setPixel(matrix, 6, 3, color);
+  setPixel(matrix, 2, 5, color); setPixel(matrix, 4, 6, color); setPixel(matrix, 6, 5, color);
+}
+
+void StatusDisplay::drawValve(uint8_t matrix, int8_t activeZone, uint32_t color)
+{
+  for (uint8_t x = 0; x < 8; x++) setPixel(matrix, x, 4, color);
+  for (uint8_t x = 2; x < 6; x++) { setPixel(matrix, x, 2, color); setPixel(matrix, x, 6, color); }
+  setPixel(matrix, 2, 3, color); setPixel(matrix, 5, 3, color);
+  setPixel(matrix, 2, 5, color); setPixel(matrix, 5, 5, color);
+  setPixel(matrix, 3, 0, color); setPixel(matrix, 4, 0, color);
+  setPixel(matrix, 3, 1, color); setPixel(matrix, 4, 1, color);
+  if (activeZone >= 0)
+    drawDigit(matrix, 3, 2, activeZone + 1, color);
+}
+
+void StatusDisplay::drawWell(uint8_t matrix, uint32_t color)
+{
+  for (uint8_t x = 1; x < 7; x++) { setPixel(matrix, x, 2, color); setPixel(matrix, x, 6, color); }
+  for (uint8_t y = 2; y < 7; y++) { setPixel(matrix, 1, y, color); setPixel(matrix, 6, y, color); }
+  setPixel(matrix, 3, 0, color); setPixel(matrix, 4, 0, color);
+  setPixel(matrix, 4, 1, color); setPixel(matrix, 7, 3, color); setPixel(matrix, 7, 4, color);
+  if (controller_.wellOn() || controller_.filling())
+  {
+    const uint8_t level = 3 + ((millis() / 350) % 3);
+    for (uint8_t y = level; y < 6; y++) for (uint8_t x = 2; x < 6; x++) setPixel(matrix, x, y, color);
+  }
+}
+
+void StatusDisplay::drawFlow(uint8_t matrix, uint32_t irrigationColor, uint32_t wellColor)
+{
+  // Left droplet is irrigation flow; right droplet is well flow.
+  setPixel(matrix, 2, 1, irrigationColor); setPixel(matrix, 1, 2, irrigationColor);
+  setPixel(matrix, 2, 2, irrigationColor); setPixel(matrix, 3, 2, irrigationColor);
+  setPixel(matrix, 1, 3, irrigationColor); setPixel(matrix, 2, 4, irrigationColor); setPixel(matrix, 3, 3, irrigationColor);
+  setPixel(matrix, 5, 1, wellColor); setPixel(matrix, 4, 2, wellColor);
+  setPixel(matrix, 5, 2, wellColor); setPixel(matrix, 6, 2, wellColor);
+  setPixel(matrix, 4, 3, wellColor); setPixel(matrix, 5, 4, wellColor); setPixel(matrix, 6, 3, wellColor);
+  for (uint8_t x = 1; x < 7; x++) setPixel(matrix, x, 6, (x < 4) ? irrigationColor : wellColor);
+}
+
 void StatusDisplay::renderStatus(bool wifiConnected, bool mqttConnected)
 {
   const uint32_t red = pixels_.Color(255, 0, 0);
@@ -88,6 +160,7 @@ void StatusDisplay::renderStatus(bool wifiConnected, bool mqttConnected)
   const uint32_t blue = pixels_.Color(0, 70, 255);
   const uint32_t cyan = pixels_.Color(0, 180, 180);
   const uint32_t amber = pixels_.Color(255, 80, 0);
+  const uint32_t dimBlue = pixels_.Color(0, 20, 45);
 
   if (controller_.faultMask())
     drawX(0, red);
@@ -96,31 +169,39 @@ void StatusDisplay::renderStatus(bool wifiConnected, bool mqttConnected)
     for (uint8_t x = 1; x < 7; x++) setPixel(0, x, 1, amber);
     for (uint8_t y = 1; y < 7; y++) setPixel(0, 1, y, amber);
   }
-  else if (controller_.filling())
-  {
-    for (uint8_t x = 1; x < 7; x++) { setPixel(0, x, 1, cyan); setPixel(0, x, 6, cyan); }
-    for (uint8_t y = 1; y < 7; y++) { setPixel(0, 1, y, cyan); setPixel(0, 6, y, cyan); }
-    uint8_t level = 2 + ((millis() / 350) % 4);
-    for (uint8_t y = level; y < 6; y++) for (uint8_t x = 2; x < 6; x++) setPixel(0, x, y, blue);
-  }
   else
   {
     int8_t activeZone = -1;
     for (uint8_t i = 0; i < 4; i++) if (controller_.zoneOn(i)) { activeZone = i; break; }
-    if (activeZone >= 0)
+    const uint8_t page = (millis() / Config::DISPLAY_STATUS_PAGE_MS) % 6;
+    switch (page)
     {
-      drawDigit(0, 3, 1, activeZone + 1, blue);
-      setPixel(0, 1, 2 + ((millis() / 250) % 4), cyan);
-      setPixel(0, 7, 2 + (((millis() / 250) + 2) % 4), cyan);
+    case 0:
+      drawWifi(0, wifiConnected ? green : red);
+      break;
+    case 1:
+      drawMqtt(0, mqttConnected ? green : red);
+      break;
+    case 2:
+      drawRain(0, controller_.rainActive() ? red : (controller_.weatherBlocked() ? amber : green));
+      break;
+    case 3:
+      drawValve(0, activeZone, activeZone >= 0 ? blue : green);
+      break;
+    case 4:
+      drawWell(0, controller_.wellOn() || controller_.filling() ? cyan : green);
+      break;
+    default:
+      {
+        const bool irrigationExpected = activeZone >= 0;
+        const bool wellExpected = controller_.wellOn();
+        const uint32_t irrigationColor = controller_.irrigationLpm() > 0.05f ? green : (irrigationExpected ? amber : dimBlue);
+        const uint32_t wellColor = controller_.wellLpm() > 0.05f ? green : (wellExpected ? amber : dimBlue);
+        drawFlow(0, irrigationColor, wellColor);
+      }
+      break;
     }
-    else if (controller_.weatherBlocked())
-      for (uint8_t i = 1; i < 7; i++) setPixel(0, i, 7 - i, amber);
-    else
-      drawCheck(0, green);
   }
-
-  setPixel(0, 0, 7, wifiConnected ? green : red);
-  setPixel(0, 1, 7, mqttConnected ? green : red);
 }
 
 void StatusDisplay::renderSensor(const SensorReading sensors[2])

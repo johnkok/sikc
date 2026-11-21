@@ -109,6 +109,10 @@ const char *Controller::tankState() const
     return "empty";
   return "mid";
 }
+bool Controller::rainActive() const
+{
+  return Config::ENABLE_RAIN_SENSOR && board_.input(Config::RAIN_IN);
+}
 void Controller::updateTank(uint32_t now)
 {
   bool empty = board_.input(Config::TANK_EMPTY_IN), full = board_.input(Config::TANK_FULL_IN);

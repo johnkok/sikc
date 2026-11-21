@@ -32,9 +32,11 @@ The firmware drives 128 pixels as two daisy-chained 8x8 WS2812B modules. Connect
 
 Power the matrices from a separate regulated and fused 5 V supply. Do not power them from the A16 sensor connector. Two 64-pixel modules can approach 7.7 A at full-white maximum brightness. Feed 5 V and ground to each module, add bulk capacitance near the modules, and size the supply and wiring for the configured maximum. Firmware defaults to 8% brightness, and the Android app can set a persistent value from 0–100%.
 
-The pixel mapping assumes the common serpentine-row 8x8 layout, with the second module continuing at pixel 64. If a module has a different physical pixel order or mounting rotation, adjust `StatusDisplay::setPixel()` before installation.
+The supplied pixel mapping uses progressive row-major ordering, with the second module continuing at pixel 64. `DISPLAY_SERPENTINE_ROWS`, `DISPLAY_FLIP_X`, `DISPLAY_FLIP_Y`, and `DISPLAY_REVERSE_CHAIN` in `include/config.h` adapt the mapping for other panel layouts or mounting orientations without changing display code.
 
-The first panel shows controller state: a green check is idle, a blue number is the active zone, an animated tank is refill, an amber slash is weather block, and a red X is a fault. Its bottom-left pixels show Wi-Fi and MQTT connectivity in green or red. The second panel cycles every three seconds through temperature (orange) and moisture (blue) for probes 1 and 2. One or two top-right pixels identify the probe. During OTA, both panels become a progress display; completion shows green checks and an OTA error shows red crosses.
+The first panel rotates every two seconds through Wi-Fi, MQTT, rain/weather block, valve/active zone, well/refill, and irrigation/well flow icons. Wi-Fi and MQTT are green when connected and red when disconnected. Rain is green when clear, amber for a manual weather block, and red when the rain input is active. Valve and well icons change color when operating. The two flow droplets are green with measured flow, amber when flow is expected but not yet detected, and dim blue while idle. A fault overrides the rotation with a red X.
+
+The second panel cycles every three seconds through temperature (orange) and moisture (blue) for probes 1 and 2. One or two top-right pixels identify the probe. During OTA, both panels become a progress display; completion shows green checks and an OTA error shows red crosses.
 
 ## Field I/O assignment
 
